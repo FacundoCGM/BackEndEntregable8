@@ -8,4 +8,6 @@ routerUsers.post('/register', passport.authenticate('register'), usersController
 
 routerUsers.post('/login', passport.authenticate('login'), usersController.loginResponse)
 
+routerUsers.get('/registerbygithub', passport.authenticate('github', {scope: ['user:email']}))
+
 export default routerUsers

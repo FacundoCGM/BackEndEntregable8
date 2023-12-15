@@ -1,4 +1,3 @@
-import * as service from '../service/usersService.js'
 import UsersMongo from '../daos/mongodb/usersDao.js'
 const usersMongo = new UsersMongo()
 

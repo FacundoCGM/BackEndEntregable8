@@ -8,6 +8,7 @@ const productManager = new ProductManager(__dirname + "/data/products.json")
 import { __dirname } from './utils.js'
 import { errorHandler } from './middlewares/errorHandler.js'
 import './passport/strategies.js'
+import './passport/githubStrategies.js'
 import passport from 'passport'
 
 import './db/database.js'

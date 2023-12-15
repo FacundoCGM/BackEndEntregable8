@@ -1,24 +1,18 @@
 import * as service from '../service/usersService.js'
+import UsersMongo from '../daos/mongodb/usersDao.js'
+const usersMongo = new UsersMongo()
 
-export const register = async(req, res, next) => {
+export const registerResponse = async(req, res, next) => {
     try {
-        const newUser = await service.register(req.body)
-        if(newUser) res.redirect('/logs/login')
-        else res.redirect('/logs/registererror')
+        res.redirect('/logs/login')
     } catch(error) {
         next(error)
     }
 }
 
-export const login = async(req, res, next) => {
+export const loginResponse = async(req, res, next) => {
     try {
-        const { email, password } = req.body
-        const logUser = await service.login(email, password)
-        if (logUser) {
-            req.session.email = email
-            req.session.password = password
-            res.redirect('/mongo/products')
-        } else res.redirect('/logs/loginerror')
+        res.redirect('/mongo/products')
     } catch(error) {
         next(error)
     }

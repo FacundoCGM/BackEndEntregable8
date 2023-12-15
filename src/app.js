@@ -7,7 +7,8 @@ import { ProductManager } from './daos/fileSystem/productManager.js'
 const productManager = new ProductManager(__dirname + "/data/products.json")
 import { __dirname } from './utils.js'
 import { errorHandler } from './middlewares/errorHandler.js'
-
+import './passport/strategies.js'
+import passport from 'passport'
 
 import './db/database.js'
 import routerMongo from './routes/productsMongoRouter.js'
@@ -64,6 +65,8 @@ const mongoStoreOptions = {
 
 app.use(session(mongoStoreOptions))
 app.use(cookieParser())
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use('/users', usersRouter)
 app.use('/logs', logsRouter)

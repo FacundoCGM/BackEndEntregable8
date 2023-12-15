@@ -37,4 +37,12 @@ export default class UsersMongo {
             console.error(error)
         }
     }
+
+    async findById(id) {
+        try {
+            return await UserModel.findById(id)
+        } catch (error) {
+            console.error(error)
+        }
+    }
 }
